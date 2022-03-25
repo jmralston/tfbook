@@ -15,6 +15,13 @@ import numpy as np
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
 
+# Linear Regression: used to predict the quantitative value of Y from the predictor variable X
+# Equation: y = wx + b
+# y = dependent variable (response)
+# x = independant variable (feature)
+# w = slope of the line, or the weight/impact X has on the value of Y
+# b = intercept, value of Y when X = 0, or also the bias in the case of potential other variables that could be introduced
+
 # Creating the model:
 # Sequential is used to define the layers of your neural network
 # Inside Sequential you specify what each layer looks like (l0: layer 0) (using the keras.layers API)
@@ -25,8 +32,9 @@ l0 = Dense(units=1, input_shape=[1])
 model = Sequential([l0])
 
 # Defining how the model will train:
-# optimizer='sgd' uses stochastic gradient descent, a mathematical function that can provide a guess using
+# optimizer='sgd' uses stochastic gradient descent with a default learning rate of 0.01, a mathematical function that can provide a guess using
 # target values, the previous guess value, and the results of the calculated loss on that guess
+# SGD is a function that iteratively updates the values of the weight (gradient, slope) in an effort to reduce the loss
 # In this case the calculated loss will use MSE (Mean Squared Error):
 # 1. Subtract the predicated value from the actual value
 # 2. Take the absolute value of the error and square it
